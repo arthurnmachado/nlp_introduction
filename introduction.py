@@ -69,7 +69,7 @@ print("\n")
 #Dispersion and frequency
 from nltk import FreqDist
 
-text8.dispersion_plot(["woman", "lady", "girl", "gal", "man", "gentleman", "boy", "guy"]) #
+text8.dispersion_plot(["woman", "lady", "girl", "gal", "man", "gentleman", "boy", "guy"]) 
 
 frequency_distribution = FreqDist(text8)
 print(frequency_distribution)

@@ -36,10 +36,41 @@ print(lemmatizer.lemmatize("scarves"))
 #-------------------------
 print("\n")
 #-------------------------
-#Text analyzing, concordance, dispersion, frequency
+#POS Tagging
+from nltk import pos_tag
+
+quote = "If you wish to make an apple pie from scratch, you must first invent the universe."
+wordsQuote = word_tokenize(quote)
+
+print(pos_tag(wordsQuote))
+#-------------------------
+print("\n")
+#-------------------------
+#Chunking
+from nltk import RegexpParser
+
+tagged_quote = pos_tag(wordsQuote)
+grammar = "NP: {<DT>?<JJ>*<NN>}" #Noun phrase chunking
+chunk = RegexpParser(grammar)
+
+tree = chunk.parse(tagged_quote)
+tree.draw()
+#-------------------------
+print("\n")
+#-------------------------
+#Text analyzing, concordance
 from nltk.book import *
 
 print(text8.concordance("man"))
 print(text8.concordance("woman"))
+#-------------------------
+print("\n")
+#-------------------------
+#Dispersion and frequency
+from nltk import FreqDist
 
-# print(text8.dispersion_plot(["woman", "lady", "girl"]))
+text8.dispersion_plot(["woman", "lady", "girl", "gal", "man", "gentleman", "boy", "guy"]) #
+
+frequency_distribution = FreqDist(text8)
+print(frequency_distribution)
+print(frequency_distribution.most_common(20))
